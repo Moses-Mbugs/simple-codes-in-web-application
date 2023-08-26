@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Word Randomizer</title>
+</head>
+<body>
+    <h1>Word Randomizer</h1>
+    <label for="input-words">Enter a list of words or phrases, separated by commas:</label><br>
+    <textarea id="input-words" rows="4" cols="50"></textarea><br>
+    <button onclick="randomizeWord()">Randomize</button>
+    <div id="random-word"></div>
+
+    <script>
+        function randomizeWord() {
+            const inputWords = document.getElementById("input-words").value;
+            const wordList = inputWords.split(','); // Split the input into an array of words
+
+            // Remove leading and trailing whitespace from each word
+            const cleanedWordList = wordList.map(word => word.trim());
+
+            if (cleanedWordList.length === 0) {
+                alert("Please enter a list of words.");
+                return;
+            }
+
+            const randomIndex = Math.floor(Math.random() * cleanedWordList.length); // Get a random index
+            const randomWord = cleanedWordList[randomIndex]; // Get the random word
+
+            document.getElementById("random-word").textContent = randomWord; // Display the random word
+        }
+    </script>
+</body>
+</html>
